@@ -59,21 +59,25 @@ sudo ./ffmpeg -f v4l2 -framerate 25 -video_size 640x480 -i /dev/video0 -f mpegts
 ```
 var streamServer = http.createServer( function(request, response) {
 	var params = request.url.substr(1).split('/');
-    if(params[0]==="jsmpeg.min.js"){
-        response.setHeader('Content-Type','text/javascript;charset=utf-8');
-        response.send(fs.readfile("./jsmpeg.min.js"),function(err){
-            console.log(err);
-        });
-    }
+
 	if (params[0] !== STREAM_SECRET) {
 		console.log(
 			'Failed Stream Connection: '+ request.socket.remoteAddress + ':' +
 			request.socket.remotePort + ' - wrong secret.'
 		);
 		response.end();
-	}else{
+	}
+
+	if(params[0]==="" || params[0]==="view-stream.html" ){
         response.setHeader('Content-Type','text/html;charset=utf-8');
         response.send(fs.readfile("./view-stream.html"),function(err){
+            console.log(err);
+        });
+    }
+
+	if(params[0]==="jsmpeg.min.js"){
+        response.setHeader('Content-Type','text/javascript;charset=utf-8');
+        response.send(fs.readfile("./jsmpeg.min.js"),function(err){
             console.log(err);
         });
     }
