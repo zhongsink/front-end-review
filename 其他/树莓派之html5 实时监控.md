@@ -43,7 +43,7 @@ git clone https://github.com/phoboslab/jsmpeg
 ## 搭建：
 ```
 cd jsmepeg
-node stream-server.js supersecret
+node websocket-relay.js supersecret
 ```
 
  ```
@@ -53,7 +53,7 @@ sudo ./ffmpeg -f v4l2 -framerate 25 -video_size 640x480 -i /dev/video0 -f mpegts
  ```
  -s 设定分辨率大小， -f 指定格式， -i 指定接口， -b 指定视频流比特率， -r 指定帧率，后面的 url 填上在 websocket-relay.js 设置好的格式。
 
-由于 jsmepeg 中没有写静态服务
+由于 jsmpeg 中没有写静态服务
 
 - 可以直接 利用 fs 模块 response.setHeader('Content-Type','text/html;charset=utf-8');response.send(fs.readfile("./view-stream.html")); 同时也要写一个简单的静态服务
 ```
