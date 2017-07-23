@@ -23,8 +23,13 @@ cache.get(4);       // returns 4
 
 ### 思路
 设计LRU Cache， 需要先定义一个队列结构array，同时我们希望查找的时间复杂度为O(1),我们需要个HashMap，来记录存的值, key为所插入的key，value为所存的node。其中，我们定义队列的头部为新的元素， 尾部为旧的元素。
+
 对于以下操作，
+
 当array.length = capacity的时候, pop 队尾元素，删除HashMap记录。
+
 当put一个元素，我们之间将这个元素插入array头部,更新HashMap。
+
 当put一个元素，这个元素已经存在于hashMap中的时候，我们需要将这个元素的value更新，并且更新hashmap的索引，最后把这个元素拿出来，插到头部。
+
 当get一个元素的时候，我们需要返回这个元素值得同时，把这个元素拿出来，放到头部。
