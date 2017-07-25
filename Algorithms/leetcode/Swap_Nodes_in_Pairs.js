@@ -8,6 +8,7 @@
 /**
  * @param {ListNode} head
  * @return {ListNode}
+ * 链表，每对前后互换。
  */
 var swapPairs = function(head) {
     if (!head)
