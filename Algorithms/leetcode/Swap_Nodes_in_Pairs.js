@@ -32,3 +32,16 @@ var swapPairs = function(head) {
     }
     return arr[0];
 };
+
+var swapPairs2 = function(head) {
+    if (!head)
+        return null;
+    if (head && head.next) {
+        var next = head.next
+        head.next = swapPairs2(next.next)
+        next.next = head
+        return next
+    }
+    return head
+};
+
